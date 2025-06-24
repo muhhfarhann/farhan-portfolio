@@ -1,4 +1,4 @@
-// File: /media/stooner/New Volume/Belajar Web/Javascript/NextJs/projects/farhan/farhan-frontend/app/page.tsx
+// File: /media/stooner/New Volume/Belajar Web/Javascript/NextJs/projects/farhan-backup-2025-06-24-13-49-25/farhan-frontend/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
