@@ -42,7 +42,7 @@ next-env.d.ts
 
 # Backend
 farhan-backend/src/config/serviceAccount.json
-farhan-backend/src/config/node_modules
+farhan-backend/src/config/node_modules/
 
 # frontend
-farhan-frontend/node_modules
+farhan-frontend/node_modules/
