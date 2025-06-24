@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+#certif::-webkit-scrollbar {
+  display: none;
+}
