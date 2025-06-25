@@ -1,5 +1,7 @@
-import express from 'express';
-import { db } from '../config/firebase.js';
+// import express from 'express';
+// import { db } from '../config/firebase.js';
+const express = require('express')
+const { db } = require('../config/firebase.js')
 
 const router = express.Router();
 
@@ -26,4 +28,4 @@ router.post('/', async (req, res) => {
     }
 });
 
-export default router;
+module.exports = router;
