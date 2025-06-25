@@ -113,8 +113,8 @@ export default function Home() {
 
   //fungsi untuk handle click
   const handleClick = () => {
-    const imgRotateHand = document.querySelector('#rotateHand');
-    const hamburger = document.querySelector('#hambuger');
+    // const imgRotateHand = document.querySelector('#rotateHand');
+    // const hamburger = document.querySelector('#hambuger');
     setClick(true);
 
     if (click == true) {

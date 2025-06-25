@@ -41,8 +41,9 @@ export default function Client() {
           >
             {clientImage &&
               clientImage.length > 0 &&
-              clientImage.map((data) => (
+              clientImage.map((data, i) => (
                 <a
+                  key={i}
                   href=""
                   className={`mx-4 grayscale opacity-50transition duration-300 ease-in-out hover:grayscale-0 hover:opacity-100 border border-slate-400 rounded-full sm:mx-6 mb-1 sm:mb-4 flex items-center justify-center p-1 max-w-[120px]`}
                   onClick={(e) => e.preventDefault()}

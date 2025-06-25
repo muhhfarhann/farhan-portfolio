@@ -14,7 +14,7 @@ export default function Hero({ index, text }: Parameter) {
         <div className="px-10 flex flex-wrap items-center sm:w-full">
           <div className="relative sm:w-1/2 self-center px-4">
             <h1 className="relative text-sm sm:text-[1rem] font-normal sm:font-semibold font-inter text-sky-600">
-              Wellcome there.., I'm{' '}
+              Wellcome there.., I&lsquo;m
               <span className="sm:block mt-1 text-2xl sm:text-[2rem] font-semibold bg-linear-to-br from-slate-700 from-8% via-slate-300 via-2% to-slate-800 to-60% bg-clip-text text-transparent">
                 Muhammad Farhan
               </span>

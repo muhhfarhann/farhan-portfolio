@@ -50,13 +50,16 @@ export default function Contact() {
     }
 
     try {
-      const res = await fetch('https://farhan-portfolyo.netlify.app/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const res = await fetch(
+        'https://farhan-portfolyo.netlify.app/api/contact',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
         },
-        body: JSON.stringify(formData),
-      });
+      );
 
       const data = await res.json();
       if (res.ok) {
@@ -67,6 +70,7 @@ export default function Contact() {
         setStatus(data.error || 'Gagal menyimpan data');
       }
     } catch (error) {
+      console.log(error);
       setStatus('Terjadi kesalahan saat mengirim data');
     }
   };
@@ -152,7 +156,7 @@ export default function Contact() {
               className="w-full h-8 lg:h-8 px-5 text-[.75rem] mb-4 bg-slate-300 placeholder:text-slate-500 rounded-full transition duration-500 ease-in-out focus:shadow-sm focus:shadow-sky-600 focus:outline-none focus:ring-1 focus:ring-slate-300 placeholder:text-[.75rem] flex items-center invalid:focus:ring-red-500 invalid:focus:shadow-red-400 invalid:focus:bg-red-200 peer"
             />
             <p className="invisible relative -top-[.5rem] transition duration-300 ease-in-out text-red-400 text-[.8rem] peer-invalid:visible">
-              Email doesn't match..
+              Email doesn&lsquo;t match..
             </p>
             <label
               htmlFor="message"
