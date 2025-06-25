@@ -16,7 +16,7 @@ const serviceAccount = {
     client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL
 };
 
-console.log('Service Account:', serviceAccount); // Debug
+console.log('Service Account in Netlify:', serviceAccount); // Debug untuk Netlify
 
 if (!admin.apps.length) {
     admin.initializeApp({
