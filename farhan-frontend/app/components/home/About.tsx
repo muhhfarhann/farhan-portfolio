@@ -3,7 +3,7 @@ export default function About() {
   return (
     <section className="pt-24 pb-32" id="tentang">
       <div id="container">
-        <div className="flex flex-row flex-wrap">
+        <div className="flex flex-row flex-wrap md:w-full">
           <div className="w-full px-4 mb-10 sm:w-1/2">
             <h4 className="text-[1.2rem] font-bold uppercase text-sky-600 mb-3">
               About Me
@@ -12,10 +12,13 @@ export default function About() {
               Experience
             </h3>
             <p className="text-slate-500 text-base max-w-xl text-justify md:indent-5 md:text-justify indent-2">
-              Experieced build web with MERN Stack. Im experince on bootcamp at
-              collage Bina Sarana Informatika University on theme Software
-              Devlopment with Native Php, Bootstrap, MySQL. Im to contribute on
-              bootcamp at dicoding in role Full-Stack Web Developer.
+              Experienced build web with MERN Stack. Im an intern at government
+              ministry of home affairs ditjen bina bangda as an IT Support & Web
+              Developer. Im experince on bootcamp at collage Bina Sarana
+              Informatika University on theme Software Devlopment with Native
+              Php, Bootstrap, MySQL. Im to contribute on bootcamp at dicoding in
+              role Full-Stack Web Developer, in bootcamp i contribute on
+              capstone project as an backend.
             </p>
           </div>
           <div className="w-full px-4 mb-10 sm:w-1/2">
