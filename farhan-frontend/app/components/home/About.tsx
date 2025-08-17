@@ -13,7 +13,7 @@ export default function About() {
             </h3>
             <p className="text-slate-500 text-base max-w-xl text-justify md:indent-5 md:text-justify indent-2">
               Experieced build web with MERN Stack. Im experince on bootcamp at
-              collage Bina Sarana Informatika University on thme Software
+              collage Bina Sarana Informatika University on theme Software
               Devlopment with Native Php, Bootstrap, MySQL. Im to contribute on
               bootcamp at dicoding in role Full-Stack Web Developer.
             </p>
@@ -173,7 +173,7 @@ export default function About() {
               <div className="name text-[.6rem] font-bold flex flex-col justify-between">
                 <h1>Universitas :</h1>
                 <h1>Program Studi :</h1>
-                <h1>Grage :</h1>
+                <h1>Grade :</h1>
                 <h1>Tahun :</h1>
               </div>
               <div className="nilai flex flex-col justify-between">
