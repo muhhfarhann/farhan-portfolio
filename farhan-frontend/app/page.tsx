@@ -17,7 +17,6 @@ import Footer from './components/home/Footer';
 import Navbar from './components/home/Navbar';
 import FooterSection from './components/home/FooterSection';
 import Certification from './components/home/Certification';
-// import ThemeToggle from './components/home/ThemeToggle';
 
 const text = [
   'Im a developer',
