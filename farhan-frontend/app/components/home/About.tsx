@@ -168,23 +168,22 @@ export default function About() {
               {/* email */}
             </div>
           </div>
-          <div className="education w-full py-2 px-4 mb-10 md:w-1/2 bg-slate-200 rounded shadow-[0_0_5px_grey]">
-            <div className="title text-[1.2rem] font-semibold mb-4 text-sky-500 border-b border-slate-300">
-              <h1>Education</h1>
+          <div className="education rounded-2xl border border-slate-200 bg-white/80 shadow-sm backdrop-blur p-5">
+            <div className="title text-base font-semibold mb-4 text-sky-600">
+              <h3>Education</h3>
             </div>
-            <div className="container h-[100px] grid grid-cols-2 text-[.55rem]">
-              <div className="name text-[.6rem] font-bold flex flex-col justify-between">
-                <h1>Universitas :</h1>
-                <h1>Program Studi :</h1>
-                <h1>Grade :</h1>
-                <h1>Tahun :</h1>
-              </div>
-              <div className="nilai flex flex-col justify-between">
-                <h2>Bina Sarana Informatika</h2>
-                <h2>S1 Teknologi Informasi</h2>
-                <h2>3.32</h2>
-                <h2>2022-now</h2>
-              </div>
+            <div className="grid grid-cols-2 gap-y-2 text-xs sm:text-sm">
+              <div className="font-semibold text-slate-600">Universitas</div>
+              <div className="text-slate-700">Bina Sarana Informatika</div>
+
+              <div className="font-semibold text-slate-600">Program Studi</div>
+              <div className="text-slate-700">S1 Teknologi Informasi</div>
+
+              <div className="font-semibold text-slate-600">Grade</div>
+              <div className="text-slate-700">3.32</div>
+
+              <div className="font-semibold text-slate-600">Tahun</div>
+              <div className="text-slate-700">2022 — now</div>
             </div>
           </div>
         </div>
