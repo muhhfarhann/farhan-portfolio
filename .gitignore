@@ -5,3 +5,5 @@ farhan-frontend/node_modules/
 farhan-backend/.env
 
 farhan-backend/src/config/serviceAccount.json.next
+
+.next
