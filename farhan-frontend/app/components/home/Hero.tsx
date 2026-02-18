@@ -173,7 +173,7 @@ export default function Hero({ index, text }: Parameter) {
                 </h3>
                 <p className="text-sm text-slate-500">Fullstack Developer</p>
                 <div className="mt-3 text-xs text-slate-400 tracking-widest">
-                  ID: DEV-2026-ULTRA
+                  Since: 2022-Present
                 </div>
               </div>
 
