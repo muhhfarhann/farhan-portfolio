@@ -1,19 +1,78 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+"use client";
+
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useTransform,
+  useSpring,
+} from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
 
 interface Parameter {
   index: number;
   text: string[];
 }
 
-// element hero atau section about
 export default function Hero({ index, text }: Parameter) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  /* =============================
+     DRAG VALUES
+  ============================== */
+
+  const dragX = useMotionValue(0);
+  const dragY = useMotionValue(0);
+
+  /* =============================
+     SPRING FOLLOW (UNTUK BOUNCE)
+  ============================== */
+
+  const springX = useSpring(dragX, {
+    stiffness: 320,
+    damping: 18,
+    mass: 0.6,
+  });
+
+  const springY = useSpring(dragY, {
+    stiffness: 320,
+    damping: 18,
+    mass: 0.6,
+  });
+
+  /* =============================
+     3D TILT (PAKAI SPRING!)
+  ============================== */
+
+  const rotateX = useTransform(springY, [-150, 150], [20, -20]);
+  const rotateY = useTransform(springX, [-150, 150], [-20, 20]);
+
+  /* =============================
+     STRING IKUT SPRING
+  ============================== */
+
+  const stringPath = useTransform([springX, springY], (latest: number[]) => {
+    const x = latest[0];
+    const y = latest[1];
+
+    const controlX = 100 + x * 0.4;
+    const controlY = 40 + Math.abs(y) * 0.4;
+
+    return `M100 0 Q ${controlX} ${controlY}, ${100 + x} ${95 + y}`;
+  });
+
+  /* =============================
+     JSX
+  ============================== */
+
   return (
     <section className="hero w-full">
       <div className="container-hero">
         <div className="px-10 flex flex-wrap items-center sm:w-full">
+          {/* LEFT SIDE */}
           <div className="relative sm:w-1/2 self-center px-4">
-            <h1 className="relative text-sm sm:text-[1rem] font-normal sm:font-semibold font-inter text-sky-600">
+            <h1 className="relative text-sm sm:text-[1rem] font-normal sm:font-semibold font-inter text-sky-950">
               Wellcome there.., I&lsquo;m
               <span className="sm:block mt-1 text-2xl sm:text-[2rem] font-semibold bg-linear-to-br from-slate-700 from-8% via-slate-300 via-2% to-slate-800 to-60% bg-clip-text text-transparent">
                 Muhammad Farhan
@@ -27,7 +86,7 @@ export default function Hero({ index, text }: Parameter) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{
-                    type: 'spring',
+                    type: "spring",
                     stiffness: 300,
                     damping: 30,
                   }}
@@ -52,30 +111,81 @@ export default function Hero({ index, text }: Parameter) {
             </span>
           </div>
 
-          <div className="relative sm:w-1/2 self-end px-4">
-            <div className="relative mt-10">
-              <Image
-                src={'/img/911.png'}
-                alt="Profile"
-                width={0}
-                height={0}
-                className="w-full mx-auto sm:max-w-72 relative"
-                sizes="100%"
+          {/* RIGHT SIDE */}
+          <div className="relative sm:w-1/2 flex justify-center items-start px-4 mt-10">
+            {/* STRING */}
+            <motion.svg
+              className="absolute top-0"
+              width="200"
+              height="200"
+              viewBox="0 0 200 200"
+            >
+              <motion.path
+                d={stringPath}
+                stroke="#94a3b8"
+                strokeWidth="4"
+                fill="transparent"
+                strokeLinecap="round"
               />
-              <span className="absolute inset-0 -z-10 flex justify-center items-center">
-                <svg
-                  viewBox="0 0 200 200"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-full h-full"
-                >
-                  <path
-                    fill="#08BDBA"
-                    d="M21.1,-44.1C23.8,-35.1,19.8,-22.1,25.5,-14.1C31.3,-6.1,46.7,-3.1,46.1,-0.3C45.5,2.4,28.8,4.7,21.4,9.7C13.9,14.7,15.6,22.3,13.6,26.3C11.5,30.3,5.8,30.7,-0.6,31.7C-6.9,32.7,-13.9,34.4,-20.6,33.1C-27.3,31.8,-33.7,27.5,-41.4,21.5C-49,15.5,-57.7,7.7,-57.3,0.2C-56.9,-7.3,-47.3,-14.5,-37.6,-16.9C-27.9,-19.3,-18.1,-16.9,-11.8,-23.8C-5.5,-30.8,-2.8,-47.2,3.2,-52.8C9.2,-58.4,18.5,-53.2,21.1,-44.1Z"
-                    transform="translate(100 100) scale(1.5)"
-                  />
-                </svg>
-              </span>
-            </div>
+            </motion.svg>
+
+            {/* CARD */}
+            <motion.div
+              ref={cardRef}
+              drag
+              dragMomentum={false}
+              style={{
+                x: springX,
+                y: springY,
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+              }}
+              onDrag={(event, info) => {
+                dragX.set(info.offset.x);
+                dragY.set(info.offset.y);
+              }}
+              onDragEnd={() => {
+                dragX.set(0);
+                dragY.set(0);
+              }}
+              whileHover={{ scale: 1.05 }}
+              className="relative mt-24 w-64 bg-white rounded-2xl border border-slate-200 p-5 shadow-xl cursor-grab active:cursor-grabbing"
+            >
+              {/* HOLE */}
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-6 h-6 bg-slate-300 rounded-full border-4 border-white shadow-inner"></div>
+
+              {/* PHOTO */}
+              <div className="w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-teal-400 shadow-lg">
+                <Image
+                  src="/img/911.png"
+                  alt="Profile"
+                  width={300}
+                  height={300}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+
+              {/* INFO */}
+              <div className="text-center mt-4">
+                <h3 className="text-base font-bold text-slate-800 tracking-wide">
+                  Muhammad Farhan
+                </h3>
+                <p className="text-sm text-slate-500">Fullstack Developer</p>
+                <div className="mt-3 text-xs text-slate-400 tracking-widest">
+                  ID: DEV-2026-ULTRA
+                </div>
+              </div>
+
+              {/* SHINE */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(255,255,255,0.4), transparent)",
+                }}
+              />
+            </motion.div>
           </div>
         </div>
       </div>

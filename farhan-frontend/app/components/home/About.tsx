@@ -12,12 +12,28 @@ export default function About() {
               Experience
             </h3>
             <p className="text-slate-500 text-base max-w-xl text-justify md:indent-5 md:text-justify indent-2">
-              Experienced build web with MERN Stack. Im an intern at government
-              ministry of home affairs ditjen bina bangda as an IT Support & Web
-              Developer. Im experince on bootcamp at collage Bina Sarana
-              Informatika University on theme Software Devlopment with Native
-              Php, Bootstrap, MySQL. Im to contribute on bootcamp at dicoding in
-              role Full-Stack Web Developer, in bootcamp i contribute on
+              Experienced build web with MERN Stack. Im have experienced intern
+              at government ministry of home affairs ditjen bina bangda as an IT
+              Support & Web Developer. Im experince on bootcamp at collage Bina
+              Sarana Informatika University on theme Software Devlopment with
+              Native Php, Bootstrap, MySQL. Im to contribute on bootcamp at
+              <a
+                href="https://www.dicoding.com/"
+                className="text-sky-700 font-semibold"
+                target="_blank"
+              >
+                {" "}
+                dicoding{" "}
+              </a>{" "}
+              x{" "}
+              <a
+                href="https://www.dbs.com/foundation/index.html"
+                className="text-gray-950 font-semibold"
+                target="_blank"
+              >
+                DBS foundation
+              </a>{" "}
+              in role Full-Stack Web Developer, in bootcamp i contribute on
               capstone project as an backend.
             </p>
           </div>
@@ -29,7 +45,7 @@ export default function About() {
             <div className="flex flex-wrap items-center">
               {/* instagram */}
               <a
-                href=""
+                href="https://instagram.com/muhhfrhnnn"
                 target="_blank"
                 className="w-9 h-9 mr-3 mb-1 rounded-full flex justify-center items-center border border-slate-300 hover:border-sky-500 hover:bg-sky-600 hover:text-white transition duration-500 ease-in-out text-slate-500"
                 onClick={(e) => e.preventDefault()}
@@ -47,29 +63,9 @@ export default function About() {
               </a>
               {/* instagram */}
 
-              {/* line */}
-              <a
-                href=""
-                target="_blank"
-                className="w-9 h-9 mr-3 mb-1 rounded-full flex justify-center items-center border border-slate-300 hover:border-sky-500 hover:bg-sky-600 hover:text-white transition duration-500 ease-in-out text-slate-500"
-                onClick={(e) => e.preventDefault()}
-              >
-                <svg
-                  role="img"
-                  width="15"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="fill-current"
-                >
-                  <title>LINE</title>
-                  <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
-                </svg>
-              </a>
-              {/* line */}
-
               {/* whatsapp */}
               <a
-                href=""
+                href="https://wa.me/62895326257069?text=Halo%20Farhan%20saya%20ingin%20bertanya%20tentang%20portofolio%20anda"
                 target="_blank"
                 className="w-9 h-9 mr-3 mb-1 rounded-full flex justify-center items-center border border-slate-300 hover:border-sky-500 hover:bg-sky-600 hover:text-white transition duration-500 ease-in-out text-slate-500"
                 onClick={(e) => e.preventDefault()}
@@ -89,7 +85,7 @@ export default function About() {
 
               {/* git */}
               <a
-                href=""
+                href="https://github.com/muhhfarhann"
                 target="_blank"
                 className="w-9 h-9 mr-3 mb-1 rounded-full flex justify-center items-center border border-slate-300 hover:border-sky-500 hover:bg-sky-600 hover:text-white transition duration-500 ease-in-out text-slate-500"
                 onClick={(e) => e.preventDefault()}
@@ -107,49 +103,9 @@ export default function About() {
               </a>
               {/* git */}
 
-              {/* discord */}
-              <a
-                href=""
-                target="_blank"
-                className="w-9 h-9 mr-3 mb-1 rounded-full flex justify-center items-center border border-slate-300 hover:border-sky-500 hover:bg-sky-600 hover:text-white transition duration-500 ease-in-out text-slate-500"
-                onClick={(e) => e.preventDefault()}
-              >
-                <svg
-                  width="15"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Discord</title>
-                  <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
-                </svg>
-              </a>
-              {/* discord */}
-
-              {/* x */}
-              <a
-                href=""
-                target="_blank"
-                className="w-9 h-9 mr-3 mb-1 rounded-full flex justify-center items-center border border-slate-300 hover:border-sky-500 hover:bg-sky-600 hover:text-white transition duration-500 ease-in-out text-slate-500"
-                onClick={(e) => e.preventDefault()}
-              >
-                <svg
-                  width="15"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>X</title>
-                  <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
-                </svg>
-              </a>
-              {/* x */}
-
               {/* email */}
               <a
-                href=""
+                href="mailto:mf333285@gmail.com?subject=Hi%20Farhan&body=Hello%20Farhan"
                 target="_blank"
                 className="w-9 h-9 mr-3 mb-1 rounded-full flex justify-center items-center border border-slate-300 hover:border-sky-500 hover:bg-sky-600 hover:text-white transition duration-500 ease-in-out text-slate-500"
                 onClick={(e) => e.preventDefault()}
@@ -180,7 +136,7 @@ export default function About() {
               <div className="text-slate-700">S1 Teknologi Informasi</div>
 
               <div className="font-semibold text-slate-600">Grade</div>
-              <div className="text-slate-700">3.32</div>
+              <div className="text-slate-700">3.47</div>
 
               <div className="font-semibold text-slate-600">Tahun</div>
               <div className="text-slate-700">2022 — now</div>
