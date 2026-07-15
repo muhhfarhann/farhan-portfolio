@@ -5,13 +5,11 @@ interface Parameter {
   children: ReactNode;
 }
 
-// container header
 export default function ContainerHeader({ isScroll, children }: Parameter) {
   return (
     <div
-      className={`container-header w-[90%] py-[.3rem] px-2.5 fixed top-0 z-50 flex flex-row items-center rounded-lg border-[1px] border-slate-300 backdrop-blur-md ${
-        isScroll ? 'shadow-md shadow-slate-500' : 'shadow-none'
-      } transition duration-500 sm:w-[97%]`}
+      className={`w-full max-w-6xl mx-auto py-3 px-5 fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between rounded-2xl border transition-all duration-500 backdrop-blur-md
+      ${isScroll ? 'bg-white/80 dark:bg-slate-900/80 shadow-lg shadow-slate-200/50 dark:shadow-black/50 border-slate-200 dark:border-slate-800' : 'bg-transparent border-transparent'}`}
     >
       {children}
     </div>

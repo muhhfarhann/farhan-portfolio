@@ -3,24 +3,18 @@ interface Parameter {
   handleClick: () => void;
 }
 
-// humburger button
 export default function MenuButton({ click, handleClick }: Parameter) {
   return (
-    <>
-      <div
-        className={`w-[35px] h-[35px] ml-2.5 p-1 flex flex-col justify-center items-center sm:flex-row sm:justify-center sm:items-center sm:hidden cursor-pointer border-[1px] border-slate-300 rounded-2xl transition-discrete duration-300 ease-in-out hover:shadow-sm shadow-slate-700 group ${
-          click ? 'hamburger-active' : ''
-        }`}
-        id="hamburger"
-        onClick={handleClick}
-      >
-        <div className="flex flex-col items-center justify-center">
-          <span className="hamburger-line origin-top-left transition duration-500 ease-in-out"></span>
-          <span className="hamburger-line transition duration-100 ease-in-out"></span>
-          <span className="hamburger-line origin-bottom-left transition duration-500 ease-in-out"></span>
-        </div>
-        <p className="font-normal text-[.5rem]">Menu</p>
+    <button
+      onClick={handleClick}
+      aria-label="Toggle Menu"
+      className="sm:hidden flex flex-col justify-center items-center w-10 h-10 border border-slate-300 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 rounded-xl transition-colors hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none"
+    >
+      <div className="flex flex-col items-center justify-center space-y-1.5">
+        <span className={`w-5 h-0.5 bg-slate-800 dark:bg-slate-200 transition-all duration-300 ${click ? 'rotate-45 translate-y-2' : ''}`}></span>
+        <span className={`w-5 h-0.5 bg-slate-800 dark:bg-slate-200 transition-all duration-300 ${click ? 'opacity-0' : 'opacity-100'}`}></span>
+        <span className={`w-5 h-0.5 bg-slate-800 dark:bg-slate-200 transition-all duration-300 ${click ? '-rotate-45 -translate-y-2' : ''}`}></span>
       </div>
-    </>
+    </button>
   );
 }

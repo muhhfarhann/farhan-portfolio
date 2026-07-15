@@ -42,14 +42,14 @@ const images = [
 
 export default function Certification() {
   return (
-    <section id="certif" className="w-full py-20 md:py-24 bg-slate-50">
+    <section id="certif" className="w-full py-20 md:py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
       <div className="max-w-6xl mx-auto px-4">
         <header className="text-center mb-10 md:mb-14">
-          <p className="text-sky-600 text-sm tracking-wide">Certificate</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-800">
+          <p className="text-sky-600 dark:text-sky-400 text-sm tracking-wide font-semibold uppercase">Certificate</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-100 mt-2">
             Certificates & Achievements
           </h2>
-          <p className="mt-3 text-slate-500 text-sm md:text-base max-w-2xl mx-auto">
+          <p className="mt-3 text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
             This for my achievment off my learn & relevant for my career.
           </p>
         </header>
@@ -59,7 +59,7 @@ export default function Certification() {
           {images.map((item, i) => (
             <article
               key={i}
-              className="snap-start shrink-0 w-[85%] sm:w-[70%] md:w-auto md:shrink md:snap-none rounded-2xl border border-slate-200/70 bg-white/70 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow"
+              className="snap-start shrink-0 w-[85%] sm:w-[70%] md:w-auto md:shrink md:snap-none rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <div className="p-5">
                 <div className="flex items-center gap-3">
@@ -73,10 +73,10 @@ export default function Certification() {
                     />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-slate-800 font-semibold text-base truncate">
+                    <h3 className="text-slate-800 dark:text-slate-100 font-semibold text-base truncate">
                       {item.name}
                     </h3>
-                    <p className="text-slate-500 text-sm truncate">
+                    <p className="text-slate-600 dark:text-slate-400 text-sm truncate">
                       {item.topic}
                     </p>
                   </div>
@@ -85,7 +85,7 @@ export default function Certification() {
                   </span>
                 </div>
 
-                <p className="mt-4 text-sm text-slate-600 leading-relaxed">
+                <p className="mt-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                   Materi:{' '}
                   <span className="font-medium text-slate-700">
                     {item.materi}

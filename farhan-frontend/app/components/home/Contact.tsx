@@ -1,131 +1,36 @@
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useContact } from '../../hooks/useContact';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [isNotif, setIsNotif] = useState(false);
-  const [status, setStatus] = useState('Silahkan isi form'); // Status default
-
-  // Mengatur notifikasi muncul
-  useEffect(() => {
-    const containerCheck = document.querySelector('#container-check');
-
-    if (isNotif && containerCheck) {
-      containerCheck.classList.replace('invisible', 'visible');
-      containerCheck.classList.replace('left-[550px]', 'left-0');
-
-      // Setelah 3 detik, kembalikan ke kondisi semula
-      setTimeout(() => {
-        containerCheck.classList.replace('visible', 'invisible');
-        containerCheck.classList.replace('left-0', 'left-[550px]');
-        setIsNotif(false);
-      }, 3000);
-    }
-  }, [isNotif]);
-
-  // Handler untuk perubahan input
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  // Handler untuk submit form
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus(''); // Kosongkan status saat submit untuk menunjukkan proses
-
-    // Validasi sederhana untuk email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setStatus('Email tidak valid');
-      return;
-    }
-
-    try {
-      const res = await fetch(
-        'https://farhan-portfolyo.netlify.app/api/contact',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        },
-      );
-
-      const data = await res.json();
-      if (res.ok) {
-        setIsNotif(true);
-        setFormData({ name: '', email: '', message: '' }); // Reset form
-        setStatus('Data berhasil disimpan');
-      } else {
-        setStatus(data.error || 'Gagal menyimpan data');
-      }
-    } catch (error) {
-      console.log(error);
-      setStatus('Terjadi kesalahan saat mengirim data');
-    }
-  };
+  const { formData, status, isNotif, isLoading, handleChange, handleSubmit } = useContact();
 
   return (
-    <section id="kontak" className="w-full pt-36 pb-32">
-      <div id="container">
-        <div className="w-full px-4">
-          <div className="w-full px-4">
-            <div className="m-w-xl mx-auto text-center mb-16 flex flex-col items-center">
-              <h1 className="text-sky-500">Contact</h1>
-              <h2 className="font-bold text-slate-600 text-2xl mb-4">
-                Contact Me.
-              </h2>
-              <p className="font-medium text-[.75rem] text-slate-400 max-w-lg">
-                Please fill form for contact me.
-              </p>
-            </div>
-          </div>
+    <section id="kontak" className="w-full pt-24 pb-32">
+      <div className="max-w-4xl mx-auto px-4">
+        
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-sky-500 font-semibold tracking-wide uppercase text-sm mb-2">Contact</h1>
+          <h2 className="font-bold text-slate-800 dark:text-slate-100 text-3xl mb-4 transition-colors">
+            Let's Work Together
+          </h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto transition-colors">
+            Punya pertanyaan atau tawaran kerja sama? Silakan isi form di bawah ini.
+          </p>
         </div>
 
-        <div className="w-full px-4">
-          <div
-            id="container-check"
-            className="invisible fixed left-[175px] top-[200px] z-50 lg:left-[550px] mx-auto p-2.5 w-20 lg:w-1/5 h-auto max-h-auto flex flex-col items-center rounded-md ring-1 ring-slate-300 bg-slate-600 text-white shadow-md shadow-teal-600"
-          >
-            <div
-              id="title"
-              className="flex flex-col items-center justify-center lg:flex-row mb-1"
-            >
-              <h1 className="font-semibold text-[.75rem] lg:text-[1.2rem] flex flex-wrap items-center justify-center w-full">
-                Success
-              </h1>
-              <Image
-                width={15}
-                height={20}
-                src="/img/check.png"
-                alt="Success Image"
-                className="w-[15px] lg:w-[20px]"
-              />
-            </div>
-            <p className="text-[.5rem] lg:text-[.75rem]">Data Success Saved</p>
+        {/* Notifikasi Toast (React Way) */}
+        {isNotif && (
+          <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-teal-600/90 backdrop-blur-sm text-white px-6 py-3 rounded-full shadow-lg shadow-teal-600/20 animate-in slide-in-from-top-10 fade-in duration-300">
+            <Image width={20} height={20} src="/img/check.png" alt="Success" className="w-5 h-5" />
+            <p className="text-sm font-medium">Data Successfully Saved</p>
           </div>
-        </div>
+        )}
 
-        <form
-          method="post"
-          className="sm:w-2/3 sm:mx-auto"
-          onSubmit={handleSubmit}
-        >
-          <div className="w-full px-4 mb-8">
-            <label
-              htmlFor="name"
-              className="mb-2 text-base font-bold text-sky-500"
-            >
+        {/* Form Section */}
+        <form onSubmit={handleSubmit} className="w-full sm:w-2/3 mx-auto bg-white/50 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-3xl shadow-sm transition-colors">
+          <div className="mb-6">
+            <label htmlFor="name" className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
               Name
             </label>
             <input
@@ -133,16 +38,16 @@ export default function Contact() {
               id="name"
               name="name"
               required
-              placeholder="Write here"
+              placeholder="John Doe"
               autoComplete="off"
               value={formData.name}
               onChange={handleChange}
-              className="w-full h-8 lg:h-8 px-5 mb-4 text-[.75rem] bg-slate-300 placeholder:text-slate-500 rounded-full transition duration-500 ease-in-out focus:shadow-sm focus:shadow-sky-600 focus:outline-none focus:ring-1 focus:ring-slate-300 placeholder:text-[.75rem] flex items-center"
+              className="w-full h-11 px-5 text-sm bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 border border-transparent focus:border-sky-500 dark:focus:border-sky-500 rounded-xl transition duration-300 focus:outline-none focus:ring-4 focus:ring-sky-500/10 placeholder:text-slate-400"
             />
-            <label
-              htmlFor="email"
-              className="mb-2 text-base font-bold text-sky-500"
-            >
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="email" className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
               Email
             </label>
             <input
@@ -150,51 +55,48 @@ export default function Contact() {
               id="email"
               name="email"
               required
+              placeholder="hello@example.com"
               autoComplete="off"
               value={formData.email}
               onChange={handleChange}
-              className="w-full h-8 lg:h-8 px-5 text-[.75rem] mb-4 bg-slate-300 placeholder:text-slate-500 rounded-full transition duration-500 ease-in-out focus:shadow-sm focus:shadow-sky-600 focus:outline-none focus:ring-1 focus:ring-slate-300 placeholder:text-[.75rem] flex items-center invalid:focus:ring-red-500 invalid:focus:shadow-red-400 invalid:focus:bg-red-200 peer"
+              className="w-full h-11 px-5 text-sm bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 border border-transparent focus:border-sky-500 dark:focus:border-sky-500 rounded-xl transition duration-300 focus:outline-none focus:ring-4 focus:ring-sky-500/10 placeholder:text-slate-400 invalid:focus:border-red-500 invalid:focus:ring-red-500/10 peer"
             />
-            <p className="invisible relative -top-[.5rem] transition duration-300 ease-in-out text-red-400 text-[.8rem] peer-invalid:visible">
-              Email doesn&lsquo;t match..
+            <p className="mt-1 text-xs text-red-500 opacity-0 peer-invalid:peer-focus:opacity-100 transition-opacity">
+              Please enter a valid email address.
             </p>
-            <label
-              htmlFor="message"
-              className="mb-2 text-base font-bold text-sky-500"
-            >
+          </div>
+
+          <div className="mb-8">
+            <label htmlFor="message" className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
               Message
             </label>
             <textarea
               id="message"
               name="message"
               required
-              autoComplete="off"
+              placeholder="How can I help you?"
+              rows={4}
               value={formData.message}
               onChange={handleChange}
-              className="w-full text-[.8rem] py-1 px-4 mb-1.5 bg-slate-300 placeholder:text-slate-500 rounded-sm transition duration-500 ease-in-out focus:shadow-sm focus:shadow-sky-600 focus:outline-none focus:ring-1 focus:ring-slate-300 placeholder:text-[.75rem] max-h-40"
+              className="w-full py-3 px-5 text-sm bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 border border-transparent focus:border-sky-500 dark:focus:border-sky-500 rounded-xl transition duration-300 focus:outline-none focus:ring-4 focus:ring-sky-500/10 placeholder:text-slate-400 resize-none"
             ></textarea>
           </div>
-          <div className="w-full px-4">
-            <button
-              type="submit"
-              className="relative py-1 px-1 mx-auto bg-teal-500 rounded-full text-[.75rem] transition duration-500 ease-in-out shadow-sm shadow-slate-400 hover:bg-teal-600 hover:shadow-md hover:-top-[1px] font-semibold text-base text-white ring-1 ring-teal-300 w-full sm:w-[15%]"
-            >
-              Kirim
-            </button>
-          </div>
-          <div className="w-full px-4 mt-4 text-center">
-            <p
-              className={`text-[.75rem] ${
-                status.includes('berhasil')
-                  ? 'text-green-500'
-                  : status === 'Silahkan isi form'
-                  ? 'text-slate-400'
-                  : 'text-red-500'
-              }`}
-            >
-              {status}
-            </p>
-          </div>
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold rounded-xl transition duration-300 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {isLoading ? 'Sending...' : 'Send Message'}
+          </button>
+
+          <p className={`mt-5 text-center text-sm font-medium ${
+            status.includes('berhasil') ? 'text-emerald-500' 
+            : status === 'Silakan isi form' ? 'text-slate-400' 
+            : 'text-red-500'
+          }`}>
+            {status}
+          </p>
         </form>
       </div>
     </section>

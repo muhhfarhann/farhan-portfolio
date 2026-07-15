@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
 import HeaderContainer from './components/home/Header';
 import ContainerHeader from './components/home/ContainerHeader';
 import Logo from './components/home/Logo';
@@ -17,6 +16,7 @@ import Footer from './components/home/Footer';
 import Navbar from './components/home/Navbar';
 import FooterSection from './components/home/FooterSection';
 import Certification from './components/home/Certification';
+import ThemeToggle from './components/home/ThemeToggle';
 
 const text = [
   'Im a developer',
@@ -35,91 +35,37 @@ const firstStack = [
 ];
 
 export default function Home() {
-  const [isScroll, setScrolled] = useState(false);
+  const [isScroll, setIsScroll] = useState(false);
   const [click, setClick] = useState(false);
   const [index, setIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState('beranda');
 
-  // handle window scroll untuk memberi garis bawah di nav
+  // Efek Scroll yang lebih Clean menggunakan State
   useEffect(() => {
-    const berandaNav = document.querySelector('#beranda-nav');
-    const tentangSaya = document.querySelector('.tentang-saya');
-    const portfolio = document.querySelector('.portfolio');
-    const clients = document.querySelector('.clients');
-    const kontak = document.querySelector('.kontak');
-
     const handleScroll = () => {
       const scrollY = window.scrollY;
+      setIsScroll(scrollY > 20);
 
-      // Beranda aktif hanya jika di posisi awal
-      if (scrollY === 0) {
-        berandaNav?.classList.add('active');
-        tentangSaya?.classList.remove('active');
-        setScrolled(false);
-      } else {
-        berandaNav?.classList.remove('active');
-        setScrolled(true);
-      }
-
-      // Tentang Saya
-      if (scrollY >= 335) {
-        tentangSaya?.classList.add('active');
-      } else {
-        tentangSaya?.classList.remove('active');
-      }
-
-      if (scrollY > 825) {
-        tentangSaya?.classList.remove('active');
-      }
-
-      // Portfolio
-      if (scrollY >= 815 && scrollY <= 1928) {
-        portfolio?.classList.add('active');
-      } else {
-        portfolio?.classList.remove('active');
-      }
-
-      // Clients
-      if (scrollY >= 2009) {
-        clients?.classList.add('active');
-      } else {
-        clients?.classList.remove('active');
-      }
-
-      // Kontak
-      if (scrollY >= 2624) {
-        clients?.classList.remove('active');
-        kontak?.classList.add('active');
-      } else {
-        kontak?.classList.remove('active');
-      }
-
-      if (scrollY > 2916) {
-        kontak?.classList.remove('active');
-      }
+      // Deteksi section (Bisa disesuaikan ukurannya dengan tinggi layar aktual)
+      if (scrollY < 400) setActiveSection('beranda');
+      else if (scrollY >= 400 && scrollY < 1200) setActiveSection('tentang');
+      else if (scrollY >= 1200 && scrollY < 2000) setActiveSection('portfolio');
+      else if (scrollY >= 2000 && scrollY < 2600) setActiveSection('clients');
+      else setActiveSection('kontak');
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // untuk animasi text title
+  // Efek Ketik Hero
   useEffect(() => {
-    const intervalId = setInterval(
-      () => setIndex((i) => (i + 1) % text.length),
-      2000,
-    );
+    const intervalId = setInterval(() => setIndex((i) => (i + 1) % text.length), 2000);
     return () => clearInterval(intervalId);
   }, []);
 
-  //fungsi untuk handle click
   const handleClick = () => {
-    // const imgRotateHand = document.querySelector('#rotateHand');
-    // const hamburger = document.querySelector('#hambuger');
-    setClick(true);
-
-    if (click == true) {
-      setClick((prev) => !prev);
-    }
+    setClick((prev) => !prev);
   };
 
   return (
@@ -127,10 +73,14 @@ export default function Home() {
       <HeaderContainer>
         <ContainerHeader isScroll={isScroll}>
           <Logo />
-          <Navbar click={click} />
-          <MenuButton click={click} handleClick={handleClick} />
+          <Navbar click={click} activeSection={activeSection} />
+          <div className="ml-auto flex items-center gap-2 sm:ml-4">
+            <ThemeToggle />
+            <MenuButton click={click} handleClick={handleClick} />
+          </div>
         </ContainerHeader>
       </HeaderContainer>
+      
       <Main>
         <ContainerMain>
           <Hero index={index} text={text} />
@@ -141,6 +91,7 @@ export default function Home() {
           <Contact />
         </ContainerMain>
       </Main>
+      
       <Footer>
         <FooterSection />
       </Footer>

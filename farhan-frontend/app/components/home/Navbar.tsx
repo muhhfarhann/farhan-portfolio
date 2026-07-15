@@ -1,62 +1,33 @@
 interface Parameter {
   click: boolean;
+  activeSection: string;
 }
 
-// navbar
-export default function Navbar({ click }: Parameter) {
+export default function Navbar({ click, activeSection }: Parameter) {
+  const navItems = [
+    { id: 'beranda', label: 'Home', href: '#beranda' },
+    { id: 'tentang', label: 'About Me', href: '#tentang' },
+    { id: 'portfolio', label: 'Projects', href: '#portfolio' },
+    { id: 'clients', label: 'Clients', href: '#clients' },
+    { id: 'kontak', label: 'Contact', href: '#kontak' },
+  ];
+
   return (
-    <div className="navbar ml-auto">
-      <div
-        className={`nav-list p-1.5 text-sky-600 gap-2.5 transition duration-700 delay-1000 ${
-          click ? 'absolute right-0 z-50' : 'hidden'
-        } top-[50px] flex-col shadow-sm shadow-slate-700 bg-linear-to-br from-gray-400 via-slate-200 to-gray-200 sm:bg-none rounded-2xl sm:top-0 sm:relative sm:flex sm:flex-row sm:items-center`}
-      >
-        <div className="nav">
-          <a
-            href="#beranda"
-            className="hover:text-slate-400 beranda-nav active"
-            id="beranda-nav"
-          >
-            Home
-          </a>
-        </div>
-        <div className="nav">
-          <a
-            href="#tentang"
-            className="hover:text-slate-400 tentang-saya"
-            id="tentang-saya-nav"
-          >
-            About Me
-          </a>
-        </div>
-        <div className="nav">
-          <a
-            href="#portfolio"
-            className="hover:text-slate-400 portfolio"
-            id="tentang-saya-nav"
-          >
-            Projects
-          </a>
-        </div>
-        <div className="nav">
-          <a
-            href="#clients"
-            className="hover:text-slate-400 clients"
-            id="tentang-saya-nav"
-          >
-            Clients
-          </a>
-        </div>
-        <div className="nav">
-          <a
-            href="#kontak"
-            className="hover:text-slate-400 kontak"
-            id="kontak-nav kontak"
-          >
-            Contact
-          </a>
-        </div>
-      </div>
+    <div className={`
+      ${click ? 'absolute right-5 top-[70px] flex flex-col p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl' : 'hidden'} 
+      sm:relative sm:top-0 sm:flex sm:flex-row sm:items-center sm:gap-6 sm:p-0 sm:bg-transparent sm:border-none sm:shadow-none transition-all duration-300 z-50 ml-auto
+    `}>
+      {navItems.map((item) => (
+        <a
+          key={item.id}
+          href={item.href}
+          className={`font-medium text-sm transition-colors hover:text-sky-500 mb-3 sm:mb-0 
+            ${activeSection === item.id ? 'text-sky-500 dark:text-sky-400 font-semibold' : 'text-slate-600 dark:text-slate-300'}
+          `}
+        >
+          {item.label}
+        </a>
+      ))}
     </div>
   );
 }
