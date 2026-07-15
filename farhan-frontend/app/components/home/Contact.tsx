@@ -12,7 +12,7 @@ export default function Contact() {
         <div className="text-center mb-12">
           <h1 className="text-sky-500 font-semibold tracking-wide uppercase text-sm mb-2">Contact</h1>
           <h2 className="font-bold text-slate-800 dark:text-slate-100 text-3xl mb-4 transition-colors">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto transition-colors">
             Punya pertanyaan atau tawaran kerja sama? Silakan isi form di bawah ini.

@@ -39,8 +39,11 @@ export const useContact = () => {
       setIsNotif(true);
       setFormData({ name: '', email: '', message: '' });
       setStatus('Pesan berhasil dikirim!');
-    } catch (error: any) {
-      setStatus(error.message || 'Terjadi kesalahan jaringan.');
+    } catch (error: unknown) {
+      console.log(error);
+      // Gunakan type guard untuk mendapatkan pesan error yang aman
+      const errorMessage = error instanceof Error ? error.message : 'Terjadi kesalahan saat mengirim data';
+      setStatus(errorMessage);
     } finally {
       setIsLoading(false);
     }
