@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from 'framer-motion';
+
 interface Parameter {
   click: boolean;
   activeSection: string;
@@ -17,16 +21,19 @@ export default function Navbar({ click, activeSection }: Parameter) {
       ${click ? 'absolute right-5 top-[70px] flex flex-col p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl' : 'hidden'} 
       sm:relative sm:top-0 sm:flex sm:flex-row sm:items-center sm:gap-6 sm:p-0 sm:bg-transparent sm:border-none sm:shadow-none transition-all duration-300 z-50 ml-auto
     `}>
-      {navItems.map((item) => (
-        <a
+      {navItems.map((item, index) => (
+        <motion.a
           key={item.id}
           href={item.href}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.2 + (index * 0.1) }} // Efek muncul berurutan
           className={`font-medium text-sm transition-colors hover:text-sky-500 mb-3 sm:mb-0 
             ${activeSection === item.id ? 'text-sky-500 dark:text-sky-400 font-semibold' : 'text-slate-600 dark:text-slate-300'}
           `}
         >
           {item.label}
-        </a>
+        </motion.a>
       ))}
     </div>
   );
