@@ -17,6 +17,7 @@ import Navbar from './components/home/Navbar';
 import FooterSection from './components/home/FooterSection';
 import Certification from './components/home/Certification';
 import ThemeToggle from './components/home/ThemeToggle';
+import ParallaxBackground from './components/home/ParallaxBackground'; // <-- PASTIKAN INI DIIMPORT
 
 const text = [
   'Im a developer',
@@ -70,6 +71,7 @@ export default function Home() {
 
   return (
     <>
+      <ParallaxBackground />
       <HeaderContainer>
         <ContainerHeader isScroll={isScroll}>
           <Logo />

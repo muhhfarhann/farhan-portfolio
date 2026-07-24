@@ -35,7 +35,7 @@ export default function Portfolio({ firstStack }: PortfolioProps) {
   } as const;
 
   return (
-    <section id="portfolio" className="w-full py-20 md:py-24 bg-slate-100 dark:bg-slate-900 transition-colors duration-500">
+    <section id="portfolio" className="w-full py-20 md:py-24 transparent transition-colors duration-500">
       <div className="max-w-6xl mx-auto px-4">
         
         <motion.header 

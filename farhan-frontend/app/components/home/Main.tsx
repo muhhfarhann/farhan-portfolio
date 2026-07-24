@@ -4,13 +4,10 @@ interface Parameter {
   children: ReactNode;
 }
 
-// main element
 export default function Main({ children }: Parameter) {
   return (
-    <main
-      id=""
-      className={`mt-[3.5rem] px-[4rem] flex flex-col sm:flex-row sm:justify-center box-border w-full max-w-full overflow-x-hidden`}
-    >
+    // Hapus margin atas dan padding samping, biarkan full edge-to-edge
+    <main className="w-full flex flex-col overflow-x-hidden relative">
       {children}
     </main>
   );

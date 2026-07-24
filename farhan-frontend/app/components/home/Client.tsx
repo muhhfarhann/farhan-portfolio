@@ -23,7 +23,7 @@ export default function Client() {
   } as const;
 
   return (
-    <section id="clients" className="w-full py-24 bg-slate-100 dark:bg-slate-900/50 transition-colors border-y border-slate-200 dark:border-slate-800">
+    <section id="clients" className="w-full py-24 transparent transition-colors border-y border-slate-200 dark:border-slate-800">
       <div className="max-w-6xl mx-auto px-4">
         
         <motion.div 

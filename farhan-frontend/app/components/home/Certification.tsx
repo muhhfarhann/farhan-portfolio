@@ -23,7 +23,7 @@ export default function Certification() {
   } as const;
 
   return (
-    <section id="certif" className="w-full py-20 md:py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <section id="certif" className="w-full py-20 md:py-24 transparent transition-colors duration-500 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         
         <motion.header 

@@ -47,7 +47,7 @@ export default function About() {
   };
 
   return (
-    <section id="tentang" className="relative w-full pt-28 pb-32 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
+    <section id="tentang" className="relative w-full pt-28 pb-32 overflow-hidden transparent transition-colors duration-500">
       
       {/* --- EFEK CAHAYA MELAYANG (BACKGROUND) --- */}
       <motion.div 
